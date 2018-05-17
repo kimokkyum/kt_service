@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mapper">
+
+    <select id="selectTraffic" parameterType="String" resultType="com.kt.traffic.domain.TrafficInfomation">
+        SELECT
+                traffic_id
+              , traffic_title
+              , traffic_location
+              , traffic_update_date
+              , traffic_full_address
+              , traffic_country
+              , traffic_city
+              , traffic_state
+              , traffic_street
+              , traffic_post
+              , traffic_info
+              , reg_date
+        FROM traffic_info
+        WHERE traffic_id = #{id}
+    </select>
+
+    <select id="selectTrafficList" resultType="com.kt.traffic.domain.TrafficInfomation">
+        SELECT
+                traffic_id
+              , traffic_title
+              , traffic_location
+              , traffic_update_date
+              , traffic_full_address
+              , traffic_country
+              , traffic_city
+              , traffic_state
+              , traffic_street
+              , traffic_post
+              , traffic_info
+              , reg_date
+        FROM traffic_info
+        ORDER BY reg_date DESC
+    </select>
+
+    <insert id="insertTrafficInfo" parameterType="hashmap">
+
+    </insert>
+
+</mapper>

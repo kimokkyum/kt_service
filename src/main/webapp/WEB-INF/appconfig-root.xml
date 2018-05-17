@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <import resource="appconfig-mvc.xml"/>
+
+    <!-- Scans within the base package of the application for @Component classes to configure as beans -->
+    <context:component-scan base-package="com.kt.traffic.*"/>
+
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <!-- PostgreSQL JDBC setting -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="org.postgresql.Driver"/>
+        <property name="url" value="$jdbc:postgresql://localhost:5432/kt_traffic_service"/>
+        <property name="username" value="kt_admin"/>
+        <property name="password" value="admin1234"/>
+    </bean>
+
+    <!-- mybatis setting -->
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/config.xml"/>
+    </bean>
+
+    <bean id="mapper" class="com.kt.traffic.mapper.mapperImpl.MapperImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+    <bean id="basicService" class="com.kt.traffic.service.serviceImpl.BasicServiceImpl">
+        <property name="mapper" ref="mapper"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+</beans>
