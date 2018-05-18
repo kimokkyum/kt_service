@@ -11,27 +11,36 @@ import java.util.Map;
 public class MapperImpl extends SqlSessionDaoSupport implements Mapper {
 
     @Override
-    public TrafficInfomation getTrafficInfo(String id) {
-        return null;
+    public TrafficInfomation getTrafficInfo(int id) {
+        return getSqlSession().selectOne("Mapper.selectTraffic", id);
     }
 
     @Override
     public List<TrafficInfomation> getTrafficList() {
-        return null;
+        return getSqlSession().selectList("Mapper.selectTrafficList");
     }
 
     @Override
     public boolean insertTrafficInfo(Map<String, Object> map) {
-        return false;
+
+        int rows = getSqlSession().insert("Mapper.insertTrafficInfo", map);
+
+        return rows > 0 ;
     }
 
     @Override
-    public boolean updateTrafficInfo(String id, Map<String, Object> map) {
-        return false;
+    public boolean updateTrafficInfo( Map<String, Object> map) {
+
+        int rows = getSqlSession().update("Mapper.updateTrafficInfo", map);
+
+        return rows > 0 ;
     }
 
     @Override
-    public boolean deleteTrafficInfo(String id) {
-        return false;
+    public boolean deleteTrafficInfo(int id) {
+
+        int rows = getSqlSession().delete("Mapper.deleteTrafficInfo", id);
+
+        return rows > 0 ;
     }
 }

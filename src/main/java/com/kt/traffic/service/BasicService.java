@@ -7,9 +7,9 @@ import java.util.Map;
 
 public interface BasicService {
 
-    public TrafficInfomation getTraffic(String id);
+    public TrafficInfomation getTraffic(int id);
     public List<TrafficInfomation> getList();
-    public void addTrafficInfo(Map<String, Object> map);
-    public void updateTrafficInfo(String id, Map<String, Object> map);
-    public void deleteTrafficInfo(String id);
+    public boolean addTrafficInfo(Map<String, Object> map);
+    public boolean updateTrafficInfo(Map<String, Object> map);
+    public boolean deleteTrafficInfo(int id);
 }

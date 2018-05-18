@@ -4,17 +4,26 @@ import java.util.Date;
 
 public class TrafficInfomation {
 
+    private int trafficId;
     private String trafficTitle;
     private String trafficLocation;
-    private Date trafficUpdateDate;
+    private String trafficUpdateDate;
     private String trafficFullAddress;
     private String trafficCountry;
     private String trafficCity;
     private String trafficState;
     private String trafficStreet;
-    private int trafficPost;
+    private String trafficPost;
     private String trafficInfo;
+    private Date regDate;
 
+    public int getTrafficId() {
+        return trafficId;
+    }
+
+    public void setTrafficId(int trafficId) {
+        this.trafficId = trafficId;
+    }
 
     public String getTrafficTitle() {
         return trafficTitle;
@@ -32,11 +41,11 @@ public class TrafficInfomation {
         this.trafficLocation = trafficLocation;
     }
 
-    public Date getTrafficUpdateDate() {
+    public String getTrafficUpdateDate() {
         return trafficUpdateDate;
     }
 
-    public void setTrafficUpdateDate(Date trafficUpdateDate) {
+    public void setTrafficUpdateDate(String trafficUpdateDate) {
         this.trafficUpdateDate = trafficUpdateDate;
     }
 
@@ -80,11 +89,11 @@ public class TrafficInfomation {
         this.trafficStreet = trafficStreet;
     }
 
-    public int getTrafficPost() {
+    public String getTrafficPost() {
         return trafficPost;
     }
 
-    public void setTrafficPost(int trafficPost) {
+    public void setTrafficPost(String trafficPost) {
         this.trafficPost = trafficPost;
     }
 
@@ -96,19 +105,29 @@ public class TrafficInfomation {
         this.trafficInfo = trafficInfo;
     }
 
+    public Date getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
+
     @Override
     public String toString() {
         return "TrafficInfomation{" +
-                "trafficTitle='" + trafficTitle + '\'' +
+                "trafficId=" + trafficId +
+                ", trafficTitle='" + trafficTitle + '\'' +
                 ", trafficLocation='" + trafficLocation + '\'' +
-                ", trafficUpdateDate=" + trafficUpdateDate +
+                ", trafficUpdateDate='" + trafficUpdateDate + '\'' +
                 ", trafficFullAddress='" + trafficFullAddress + '\'' +
                 ", trafficCountry='" + trafficCountry + '\'' +
                 ", trafficCity='" + trafficCity + '\'' +
                 ", trafficState='" + trafficState + '\'' +
                 ", trafficStreet='" + trafficStreet + '\'' +
-                ", trafficPost=" + trafficPost +
+                ", trafficPost='" + trafficPost + '\'' +
                 ", trafficInfo='" + trafficInfo + '\'' +
+                ", regDate=" + regDate +
                 '}';
     }
 }

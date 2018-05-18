@@ -18,27 +18,27 @@ public class BasicServiceImpl implements BasicService{
     }
 
     @Override
-    public TrafficInfomation getTraffic(String id) {
-        return null;
+    public TrafficInfomation getTraffic(int id) {
+        return mapper.getTrafficInfo(id);
     }
 
     @Override
     public List<TrafficInfomation> getList() {
-        return null;
+        return mapper.getTrafficList();
     }
 
     @Override
-    public void addTrafficInfo(Map<String, Object> map) {
-
+    public boolean addTrafficInfo(Map<String, Object> map) {
+         return mapper.insertTrafficInfo(map);
     }
 
     @Override
-    public void updateTrafficInfo(String id, Map<String, Object> map) {
-
+    public boolean updateTrafficInfo( Map<String, Object> map) {
+        return mapper.updateTrafficInfo(map);
     }
 
     @Override
-    public void deleteTrafficInfo(String id) {
-
+    public boolean deleteTrafficInfo(int id) {
+        return mapper.deleteTrafficInfo(id);
     }
 }

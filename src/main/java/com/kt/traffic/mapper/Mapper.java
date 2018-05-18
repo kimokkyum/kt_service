@@ -8,9 +8,9 @@ import com.kt.traffic.domain.TrafficInfomation;
 
 public interface Mapper {
 
-  public TrafficInfomation getTrafficInfo(String id);
+  public TrafficInfomation getTrafficInfo(int id);
   public List<TrafficInfomation> getTrafficList();
   public boolean insertTrafficInfo(Map<String, Object> map);
-  public boolean updateTrafficInfo(String id, Map<String, Object> map);
-  public boolean deleteTrafficInfo(String id);
+  public boolean updateTrafficInfo(Map<String, Object> map);
+  public boolean deleteTrafficInfo(int id);
 }

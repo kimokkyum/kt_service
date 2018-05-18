@@ -3,44 +3,107 @@
 
 <mapper namespace="Mapper">
 
-    <select id="selectTraffic" parameterType="String" resultType="com.kt.traffic.domain.TrafficInfomation">
+    <select id="selectTraffic" parameterType="Integer" resultType="com.kt.traffic.domain.TrafficInfomation">
         SELECT
-                traffic_id
-              , traffic_title
-              , traffic_location
-              , traffic_update_date
-              , traffic_full_address
-              , traffic_country
-              , traffic_city
-              , traffic_state
-              , traffic_street
-              , traffic_post
-              , traffic_info
-              , reg_date
+                traffic_id AS trafficId
+              , traffic_title AS trafficTitle
+              , traffic_location AS trafficLocation
+              , traffic_update_date AS trafficUpdateDate
+              , traffic_full_address AS trafficFullAddress
+              , traffic_country AS trafficCountry
+              , traffic_city AS trafficCity
+              , traffic_state AS trafficState
+              , traffic_street AS trafficStreet
+              , traffic_post AS trafficPost
+              , traffic_info AS trafficInfo
+              , reg_date AS regDate
         FROM traffic_info
         WHERE traffic_id = #{id}
     </select>
 
     <select id="selectTrafficList" resultType="com.kt.traffic.domain.TrafficInfomation">
         SELECT
-                traffic_id
-              , traffic_title
-              , traffic_location
-              , traffic_update_date
-              , traffic_full_address
-              , traffic_country
-              , traffic_city
-              , traffic_state
-              , traffic_street
-              , traffic_post
-              , traffic_info
-              , reg_date
+                traffic_id AS trafficId
+              , traffic_title AS trafficTitle
+              , traffic_location AS trafficLocation
+              , traffic_update_date AS trafficUpdateDate
+              , traffic_full_address AS trafficFullAddress
+              , traffic_country AS trafficCountry
+              , traffic_city AS trafficCity
+              , traffic_state AS trafficState
+              , traffic_street AS trafficStreet
+              , traffic_post AS trafficPost
+              , traffic_info AS trafficInfo
+              , reg_date AS regDate
         FROM traffic_info
         ORDER BY reg_date DESC
     </select>
 
     <insert id="insertTrafficInfo" parameterType="hashmap">
-
+          INSERT INTO traffic_info
+          (
+            traffic_title
+          , traffic_location
+          , traffic_update_date
+          , traffic_full_address
+          , traffic_country
+          , traffic_city
+          , traffic_state
+          , traffic_street
+          , traffic_post
+          , traffic_info
+          )
+          VALUES
+          (
+            #{traffic_title}
+          , #{traffic_location}
+          , #{traffic_update_date}
+          , #{traffic_full_address}
+          , #{traffic_country}
+          , #{traffic_city}
+          , #{traffic_state}
+          , #{traffic_street}
+          , #{traffic_post}
+          , #{traffic_info}
+          )
     </insert>
+
+    <update id="updateTrafficInfo" parameterType="hashmap">
+        UPDATE traffic_info
+            <trim prefix="SET" suffixOverrides=",">
+                <if test="traffic_title != null">
+                      traffic_title =  #{traffic_title},
+                </if>
+                <if test="traffic_location != null">
+                      traffic_location = #{tupdate_location},
+                </if>
+                <if test="traffic_update_date != null">
+                      traffic_update_date = #{traffic_update_date},
+                </if>
+                <if test="traffic_full_address != null">
+                      traffic_full_address = #{traffic_full_address},
+                </if>
+                <if test="traffic_country != null">
+                      traffic_country = #{traffic_country},
+                </if>
+                <if test="traffic_city != null">
+                      traffic_city = #{traffic_city},
+                </if>
+                <if test="traffic_street != null">
+                      traffic_street = #{traffic_street},
+                </if>
+                <if test="traffic_post != null">
+                      traffic_post = #{traffic_post},
+                </if>
+                <if test="traffic_info != null">
+                      traffic_info = #{traffic_info}
+                </if>
+            </trim>
+        WHERE traffic_id = #{traffic_id}
+    </update>
+
+    <delete id="deleteTrafficInfo" parameterType="Integer">
+        DELETE FROM traffic_info WHERE traffic_id = #{id}
+    </delete>
 
 </mapper>
