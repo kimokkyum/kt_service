@@ -106,4 +106,8 @@
         DELETE FROM traffic_info WHERE traffic_id = #{id}
     </delete>
 
+<select id="" parameterType="hashmap">
+	
+</select>
+
 </mapper>

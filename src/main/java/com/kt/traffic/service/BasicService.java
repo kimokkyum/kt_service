@@ -12,4 +12,5 @@ public interface BasicService {
     public boolean addTrafficInfo(Map<String, Object> map);
     public boolean updateTrafficInfo(Map<String, Object> map);
     public boolean deleteTrafficInfo(int id);
+    public String getLogin(String id, String pw);
 }

@@ -41,4 +41,10 @@ public class BasicServiceImpl implements BasicService{
     public boolean deleteTrafficInfo(int id) {
         return mapper.deleteTrafficInfo(id);
     }
+
+	@Override
+	public String getLogin(String id, String pw) {
+		
+		return null;
+	}
 }

@@ -57,5 +57,13 @@ public class MainController {
 
         return "DELETE SUCCESS";
     }
+    
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String logIn(@RequestBody String id, String pw) {
+    	
+    	
+    	
+    	return "";
+    }
 
 }

@@ -4,6 +4,7 @@ import com.kt.traffic.domain.TrafficInfomation;
 import com.kt.traffic.mapper.Mapper;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,4 +44,15 @@ public class MapperImpl extends SqlSessionDaoSupport implements Mapper {
 
         return rows > 0 ;
     }
+
+	@Override
+	public String logIn(String id, String pw) {
+		
+		Map<String,Object> user = new HashMap<>();
+		
+		user.put("user_id", id);
+		user.put("user_pw", pw);
+		
+		return getSqlSession().selectOne("Mapper.login", user);
+	}
 }

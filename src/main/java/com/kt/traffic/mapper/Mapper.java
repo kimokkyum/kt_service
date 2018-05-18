@@ -13,4 +13,5 @@ public interface Mapper {
   public boolean insertTrafficInfo(Map<String, Object> map);
   public boolean updateTrafficInfo(Map<String, Object> map);
   public boolean deleteTrafficInfo(int id);
+  public String logIn(String id, String pw);
 }
